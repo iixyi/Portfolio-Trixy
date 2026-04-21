@@ -6,8 +6,8 @@
   height: 100%;
 }
   --bg: #862020;
-  --card: rgba(0, 0, 0, 0.04);
-  --border: rgba(0, 0, 0, 0.08);
+  --card: rgba(255, 249, 246, 0.04);
+  --border: rgba(248, 240, 240, 0.08);
 
   --text: #e5e5e5;
   --muted: #a1a1aa;
@@ -148,6 +148,19 @@ body {
   padding: 30px;
   align-items: flex-start;
 }
+.about-right-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+.about-card p {
+  text-align: justify;
+  line-height: 1.7;
+  font-size: 15.5px;
+  color: var(--text);
+  letter-spacing: 0.2px;
+}
 
 .about-card {
   flex: 1;
@@ -156,11 +169,40 @@ body {
   padding: 25px;
   border-radius: 16px;
 }
+.about-right {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 25px;
+  border-radius: 16px;
+}
+
+/* Skills list styling */
+.skills-list {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.skills-list li {
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.skills-list li:hover {
+  transform: translateX(5px);
+  border-color: var(--accent);
+}
 /* ================================
    GALLERY CARD (LEFT SIDE)
 ================================ */
 .image-card {
-  flex: 2;
+  flex: 1;
   background: rgba(20, 20, 32, 0.6);
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -183,19 +225,15 @@ body {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 5px;
 }
 
-/* ================================
-   IMAGE STYLE
-================================ */
 .gallery-grid img {
-  width: 100%;
-  height: 110px;
+  width: 85%;
+  height: 300px; /* smaller fixed size */
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
-
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
@@ -207,15 +245,6 @@ body {
   transform: scale(1.05);
   border-color: var(--accent);
   box-shadow: 0 8px 20px rgba(245, 197, 66, 0.15);
-}
-
-/* ================================
-   OPTIONAL: FEATURE FIRST IMAGE
-================================ */
-.gallery-grid img:first-child {
-  grid-column: span 2;
-  grid-row: span 2;
-  height: 100%;
 }
 
 /* =========================================================
@@ -249,32 +278,120 @@ body {
   padding: 15px;
   text-align: center;
   border-radius: 12px;
+  transition: 0.3s ease;
 }
 
-/* =========================================================
-   RESUME FIX (IMPORTANT)
-========================================================= */
+.highlight-box:hover {
+  transform: scale(1.05);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(245, 197, 66, 0.15);
+}
+   /* ================================
+   RESUME LAYOUT FIX
+================================ */
 .resume-container {
   display: flex;
   gap: 20px;
+  align-items: flex-start;
 }
 
+/* LEFT SIDE */
 .resume-left {
   width: 30%;
   background: var(--card);
   border: 1px solid var(--border);
   padding: 25px;
   border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* RIGHT SIDE */
 .resume-right {
   width: 70%;
   background: var(--card);
   border: 1px solid var(--border);
   padding: 30px;
   border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
+/* ================================
+   RESUME BLOCKS (LEFT SIDE)
+================================ */
+.resume-block h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.resume-block p,
+.resume-block span {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.resume-block {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* remove last border */
+.resume-block:last-child {
+  border-bottom: none;
+}
+
+/* ================================
+   LIST STYLING
+================================ */
+.resume-block ul {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.resume-block ul li {
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* ================================
+   RIGHT SIDE SECTIONS
+================================ */
+.resume-section h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.resume-section p {
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* ================================
+   TIMELINE FIX
+================================ */
+.timeline-item {
+  background: rgba(255,255,255,0.03);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.timeline-item span {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.timeline-item h4 {
+  margin: 5px 0;
+}
 /* =========================================================
    CERTIFICATIONS FIX GRID STABILITY
 ========================================================= */
