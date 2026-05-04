@@ -21,20 +21,18 @@
 </div>
 
 <div class="container">
-</aside>
-                          <!-- MAIN CONTENT -->
+  <!-- MAIN CONTENT -->
   <main class="content">
-
-                            <!-- TOP NAVBAR -->
-   <nav class="topnav">
-  <ul>
-    <li><a href="#home" class="active">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#resume">Resume</a></li>
-    <li><a href="#portfolio">Certifications</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+    <!-- TOP NAVBAR -->
+    <nav class="topnav">
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 <section id="home" class="page active">
 
   <div class="home-container">
@@ -321,6 +319,28 @@
 
     </div>
   </section>
+
+  <section class="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Personal Portfolio Website</h3>
+        <p>A responsive portfolio showcasing my skills, experience, certifications, and contact information with modern design.</p>
+      </div>
+      <div class="project-card">
+        <h3>IT Support Dashboard</h3>
+        <p>Web-based tool for managing support tickets, tracking issues, and monitoring IT infrastructure efficiently.</p>
+      </div>
+      <div class="project-card">
+        <h3>Responsive Web App</h3>
+        <p>Mobile-friendly application built with HTML, CSS, and JavaScript for real-world use cases.</p>
+      </div>
+      <div class="project-card">
+        <h3>Inventory Management System</h3>
+        <p>Database-driven application for tracking equipment, inventory, and asset management.</p>
+      </div>
+    </div>
+  </section>
 </section>
 <section id="contact" class="page">
   <h1>Contact Me</h1>
@@ -329,23 +349,79 @@
 
     <!-- Contact Info -->
     <div class="contact-info-box">
-      <p>📧 trixycabuang0426@gmail.com</p>
-      <p>📞 +63 915 650 7316</p>
-      <p>📍 Philippines</p>
+      <h3>Get In Touch</h3>
+      <div class="contact-item">
+        <ion-icon name="mail-outline"></ion-icon>
+        <p>trixycabuang0426@gmail.com</p>
+      </div>
+      <div class="contact-item">
+        <ion-icon name="call-outline"></ion-icon>
+        <p>+63 915 650 7316</p>
+      </div>
+      <div class="contact-item">
+        <ion-icon name="location-outline"></ion-icon>
+        <p>San Carlos City, Pangasinan, Philippines</p>
+      </div>
+
+      <!-- Social Media Links -->
+      <div class="social-links">
+        <h4>Follow Me</h4>
+        <div class="socials">
+          <a href="https://www.facebook.com" target="_blank" title="Facebook">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" title="Instagram">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" title="LinkedIn">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- MAP -->
-    <div class="map-box">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30888.123456!2d120.343!3d15.987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1"
-        width="100%"
-        height="300"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy">
-      </iframe>
+    <!-- Contact Form -->
+    <div class="contact-form-box">
+      <h3>Send Me a Message</h3>
+      <form class="contact-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required placeholder="Message subject">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required placeholder="Your message here..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
     </div>
 
+  </div>
+
+  <!-- Map Section -->
+  <div class="map-container">
+    <h3>Location</h3>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.3625391850503!2d120.30689!3d15.9878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396374d5555555d%3A0x1234567890abcdef!2sSan%20Carlos%20City%2C%20Pangasinan!5e0!3m2!1sen!2sph!4v1234567890"
+      width="100%"
+      height="400"
+      style="border:0; border-radius: 16px;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
   </div>
 </section>
   </main>
@@ -412,6 +488,24 @@ modal.addEventListener("click", (e) => {
     modal.classList.remove("active");
   }
 });
+
+// ===== CONTACT FORM HANDLER =====
+function handleFormSubmit(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const subject = document.getElementById("subject").value;
+  const message = document.getElementById("message").value;
+  
+  // Using mailto to send email
+  const mailtoLink = `mailto:trixycabuang0426@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${encodeURIComponent(name)}%0DEmail: ${encodeURIComponent(email)}%0D%0D${encodeURIComponent(message)}`;
+  
+  window.location.href = mailtoLink;
+  
+  // Reset form after submission
+  document.querySelector(".contact-form").reset();
+}
 
 </script>
 </body>
