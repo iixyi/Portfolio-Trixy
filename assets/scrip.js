@@ -134,20 +134,62 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
     alert('PDF library not loaded. Please refresh the page.');
     return;
   }
+
   const resumeElement = document.querySelector('.resume-container');
   if (!resumeElement) {
     alert('Resume content not found.');
     return;
   }
+
+  // Add print class to body for PDF-specific styling
+  document.body.classList.add('pdf-export');
+
   const options = {
-    margin: 0.5,
+    margin: [0.5, 0.5, 0.5, 0.5], // top, right, bottom, left margins
     filename: 'Trixy_Cabuang_Resume.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    image: {
+      type: 'jpeg',
+      quality: 0.95
+    },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      letterRendering: true,
+      allowTaint: false,
+      backgroundColor: '#ffffff'
+    },
+    jsPDF: {
+      unit: 'in',
+      format: 'letter',
+      orientation: 'portrait',
+      compress: true
+    },
+    pagebreak: {
+      mode: ['avoid-all', 'css', 'legacy']
+    }
   };
-  html2pdf().set(options).from(resumeElement).save().catch(err => {
-    console.error('PDF generation failed:', err);
-    alert('Failed to generate PDF. Check console for details.');
-  });
+
+  // Show loading indicator
+  const btn = document.getElementById('downloadResumeBtn');
+  const originalText = btn.textContent;
+  btn.textContent = 'Generating PDF...';
+  btn.disabled = true;
+
+  html2pdf()
+    .set(options)
+    .from(resumeElement)
+    .save()
+    .then(() => {
+      // Reset button
+      btn.textContent = originalText;
+      btn.disabled = false;
+      document.body.classList.remove('pdf-export');
+    })
+    .catch(err => {
+      console.error('PDF generation failed:', err);
+      alert('Failed to generate PDF. Please try again.');
+      btn.textContent = originalText;
+      btn.disabled = false;
+      document.body.classList.remove('pdf-export');
+    });
 });

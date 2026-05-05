@@ -1641,3 +1641,266 @@ html, body {
     text-rendering: optimizeLegibility;
   }
 }
+
+/* =========================================================
+   PRINT/PDF STYLES FOR RESUME
+========================================================= */
+
+@media print {
+  /* Hide everything except resume content */
+  body * {
+    visibility: hidden;
+  }
+
+  .resume-container,
+  .resume-container * {
+    visibility: visible;
+  }
+
+  .resume-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    color: black !important;
+    font-family: 'Times New Roman', serif;
+    line-height: 1.4;
+  }
+
+  /* Convert two-column layout to single column for PDF */
+  .resume-left,
+  .resume-right {
+    width: 100% !important;
+    float: none !important;
+    display: block !important;
+    page-break-inside: avoid;
+  }
+
+  .resume-left {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 20px;
+  }
+
+  /* Profile section */
+  .profile {
+    text-align: center;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+
+  .profile img {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50%;
+    border: 2px solid #333;
+    margin-bottom: 10px;
+  }
+
+  .profile h2 {
+    font-size: 24px;
+    margin: 10px 0 5px 0;
+    color: #000;
+  }
+
+  .profile p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+
+  /* Resume blocks */
+  .resume-block {
+    margin-bottom: 15px;
+    page-break-inside: avoid;
+  }
+
+  .resume-block h3 {
+    font-size: 16px;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .resume-block p {
+    margin: 3px 0;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .resume-block span {
+    font-size: 11px;
+    color: #666;
+  }
+
+  .resume-block ul {
+    margin: 5px 0;
+    padding-left: 15px;
+  }
+
+  .resume-block li {
+    font-size: 12px;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  /* Resume header */
+  .resume-header {
+    text-align: center;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+
+  .resume-header h1 {
+    font-size: 28px;
+    margin: 0 0 5px 0;
+    color: #000;
+  }
+
+  .resume-header h2 {
+    font-size: 18px;
+    color: #666;
+    margin: 0 0 10px 0;
+  }
+
+  .resume-header p {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+  }
+
+  /* Resume sections */
+  .resume-section {
+    margin-bottom: 15px;
+    page-break-inside: avoid;
+  }
+
+  .resume-section h3 {
+    font-size: 16px;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .resume-section p {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 3px 0;
+  }
+
+  .resume-section ul {
+    margin: 5px 0;
+    padding-left: 15px;
+  }
+
+  .resume-section li {
+    font-size: 12px;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  /* Timeline items */
+  .timeline-item {
+    background: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+    border-left: 3px solid #333 !important;
+    padding: 10px !important;
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+  }
+
+  .timeline-item p:first-child {
+    font-weight: bold;
+    font-size: 13px;
+    color: #000;
+    margin-bottom: 5px;
+  }
+
+  .timeline-item p:last-child {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  /* Hide download button in PDF */
+  .resume-export {
+    display: none !important;
+  }
+
+  /* Ensure proper page breaks */
+  .resume-section {
+    page-break-inside: avoid;
+  }
+
+  .resume-block {
+    page-break-inside: avoid;
+  }
+
+  /* Force page break before new sections if needed */
+  .resume-section:nth-child(n+3) {
+    page-break-before: auto;
+  }
+}
+
+/* PDF Export specific styles */
+body.pdf-export .resume-container {
+  background: white !important;
+  color: black !important;
+  font-family: 'Times New Roman', serif;
+  line-height: 1.4;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.pdf-export .resume-left,
+body.pdf-export .resume-right {
+  width: 100% !important;
+  float: none !important;
+  display: block !important;
+}
+
+body.pdf-export .resume-left {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 20px;
+}
+
+body.pdf-export .profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+body.pdf-export .profile img {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+body.pdf-export .resume-block h3,
+body.pdf-export .resume-section h3 {
+  color: #000 !important;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+body.pdf-export .timeline-item {
+  background: #f9f9f9 !important;
+  border: 1px solid #ddd !important;
+  border-left: 3px solid #333 !important;
+}
+
+/* Hide download button during PDF export */
+body.pdf-export .resume-export {
+  display: none !important;
+}
