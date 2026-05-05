@@ -67,25 +67,9 @@ function handleFormSubmit(event) {
   const subject = form.subject.value.trim();
   const message = form.message.value.trim();
 
-  // Initialize EmailJS (replace with your public key)
-  emailjs.init('YOUR_PUBLIC_KEY_HERE');
-
-  const templateParams = {
-    from_name: name,
-    from_email: email,
-    subject: subject,
-    message: message,
-    to_email: 'trixycabuang0426@gmail.com'
-  };
-
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-    .then(function(response) {
-      alert('Message sent successfully!');
-      form.reset();
-    }, function(error) {
-      alert('Failed to send message. Please try again.');
-      console.error('EmailJS error:', error);
-    });
+  const mailtoLink = `mailto:trixycabuang0426@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${encodeURIComponent(name)}%0DEmail: ${encodeURIComponent(email)}%0D%0D${encodeURIComponent(message)}`;
+  window.location.href = mailtoLink;
+  form.reset();
 }
 
 window.handleFormSubmit = handleFormSubmit;
