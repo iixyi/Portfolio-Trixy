@@ -90,54 +90,6 @@ galleryToggleBtn?.addEventListener('click', () => {
   galleryToggleBtn.textContent = isCollapsed ? 'Show Less' : 'See More';
 });
 
-function handleFormSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const subject = form.subject.value.trim();
-  const message = form.message.value.trim();
-
-  // Check if EmailJS is loaded
-  if (typeof emailjs === 'undefined') {
-    alert('Email service not loaded. Please refresh the page.');
-    return;
-  }
-
-  // Initialize EmailJS with your public key
-  emailjs.init('OSEJ0GCV12AmuYwFH'); // Your EmailJS public key
-
-  const templateParams = {
-    from_name: name,
-    from_email: email,
-    reply_to: email,
-    subject: subject,
-    message: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
-    to_email: 'trixycabuang0426@gmail.com'
-  };
-
-  // Show loading
-  const submitBtn = form.querySelector('.submit-btn');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Sending...';
-  submitBtn.disabled = true;
-
-  emailjs.send('service_t5cdh9q', 'template_4zgk4cy', templateParams)
-    .then(function(response) {
-      alert('Message sent successfully!');
-      form.reset();
-    }, function(error) {
-      alert('Failed to send message. Please check your EmailJS setup or try again later.');
-      console.error('EmailJS error:', error);
-    })
-    .finally(() => {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    });
-}
-
-window.handleFormSubmit = handleFormSubmit;
-
 // PDF Export Function
 document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
   if (typeof html2pdf === 'undefined') {
