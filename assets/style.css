@@ -458,6 +458,37 @@ body {
   box-shadow: 0 8px 20px rgba(245, 197, 66, 0.15);
 }
    /* ================================
+   RESUME EXPORT BUTTON
+================================ */
+.resume-export {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 0;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: var(--bg);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(56, 189, 248, 0.32);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+   /* ================================
    RESUME LAYOUT FIX
 ================================ */
 .resume-container {

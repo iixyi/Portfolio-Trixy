@@ -67,9 +67,41 @@ function handleFormSubmit(event) {
   const subject = form.subject.value.trim();
   const message = form.message.value.trim();
 
-  const mailtoLink = `mailto:trixycabuang0426@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${encodeURIComponent(name)}%0DEmail: ${encodeURIComponent(email)}%0D%0D${encodeURIComponent(message)}`;
-  window.location.href = mailtoLink;
-  form.reset();
+  // Check if EmailJS is loaded
+  if (typeof emailjs === 'undefined') {
+    alert('Email service not loaded. Please refresh the page.');
+    return;
+  }
+
+  // Initialize EmailJS with your public key
+  emailjs.init('YOUR_PUBLIC_KEY_HERE'); // Replace with your actual public key from EmailJS dashboard
+
+  const templateParams = {
+    from_name: name,
+    from_email: email,
+    subject: subject,
+    message: message,
+    to_email: 'trixycabuang0426@gmail.com'
+  };
+
+  // Show loading
+  const submitBtn = form.querySelector('.submit-btn');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
+
+  emailjs.send('service_t5cdh9q', 'template_4zgk4cy', templateParams)
+    .then(function(response) {
+      alert('Message sent successfully!');
+      form.reset();
+    }, function(error) {
+      alert('Failed to send message. Please check your EmailJS setup or try again later.');
+      console.error('EmailJS error:', error);
+    })
+    .finally(() => {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    });
 }
 
 window.handleFormSubmit = handleFormSubmit;
