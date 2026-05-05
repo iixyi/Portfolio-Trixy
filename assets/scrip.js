@@ -67,9 +67,49 @@ function handleFormSubmit(event) {
   const subject = form.subject.value.trim();
   const message = form.message.value.trim();
 
-  const mailtoLink = `mailto:trixycabuang0426@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${encodeURIComponent(name)}%0DEmail: ${encodeURIComponent(email)}%0D%0D${encodeURIComponent(message)}`;
-  window.location.href = mailtoLink;
-  form.reset();
+  // Initialize EmailJS (replace with your public key)
+  emailjs.init('YOUR_PUBLIC_KEY_HERE');
+
+  const templateParams = {
+    from_name: name,
+    from_email: email,
+    subject: subject,
+    message: message,
+    to_email: 'trixycabuang0426@gmail.com'
+  };
+
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    .then(function(response) {
+      alert('Message sent successfully!');
+      form.reset();
+    }, function(error) {
+      alert('Failed to send message. Please try again.');
+      console.error('EmailJS error:', error);
+    });
 }
 
 window.handleFormSubmit = handleFormSubmit;
+
+// PDF Export Function
+document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
+  if (typeof html2pdf === 'undefined') {
+    alert('PDF library not loaded. Please refresh the page.');
+    return;
+  }
+  const resumeElement = document.querySelector('.resume-container');
+  if (!resumeElement) {
+    alert('Resume content not found.');
+    return;
+  }
+  const options = {
+    margin: 0.5,
+    filename: 'Trixy_Cabuang_Resume.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+  html2pdf().set(options).from(resumeElement).save().catch(err => {
+    console.error('PDF generation failed:', err);
+    alert('Failed to generate PDF. Check console for details.');
+  });
+});

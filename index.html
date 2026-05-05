@@ -16,6 +16,8 @@
   <meta name="description" content="Portfolio of Trixy Cabuang showcasing IT support experience, certifications, projects, and contact information.">
   <title>My Portfolio</title>
   <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <!-- IONICONS (REQUIRED FOR ICONS TO SHOW) -->
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -72,15 +74,36 @@
     <!-- LEFT SIDE (GALLERY) -->
     <div class="about-card image-card">
 
-      <h2>My Gallery</h2>
+      <div class="gallery-head">
+        <h2>My Gallery</h2>
+        <p>Snapshots from projects, study sessions, and moments that reflect my growth in IT and web development.</p>
+      </div>
 
       <div class="gallery-grid">
-        <img src="assets/images/pic1.jpg">
-        <img src="assets/images/pic2.jpg">
-        <img src="assets/images/pic3.jpg">
-        <img src="assets/images/pic4.jpg">
-        <img src="assets/images/pic5.jpg">
-        <img src="assets/images/pic6.jpg">
+        <figure class="gallery-item">
+          <img src="assets/images/pic1.jpg" alt="Team collaboration">
+          <figcaption><strong>Team Collaboration</strong><span>Working together on campus projects</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/images/pic2.jpg" alt="Tech setup">
+          <figcaption><strong>Tech Setup</strong><span>Preparing equipment for support tasks</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/images/pic3.jpg" alt="Classroom learning">
+          <figcaption><strong>Classroom Learning</strong><span>Studying modern technologies and tools</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/images/pic4.jpg" alt="Project wireframe">
+          <figcaption><strong>Project Wireframe</strong><span>Designing user-friendly layouts</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/images/pic5.jpg" alt="Hands-on training">
+          <figcaption><strong>Hands-on Training</strong><span>Practical IT support experience</span></figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/images/pic6.jpg" alt="Work showcase">
+          <figcaption><strong>Work Showcase</strong><span>Sharing polished project visuals</span></figcaption>
+        </figure>
       </div>
 
     </div>
@@ -88,16 +111,39 @@
     <!-- RIGHT SIDE -->
 <div class="about-right-wrapper">
 
-  <div class="about-card">
+  <div class="about-card about-profile-card">
 
-    <h1>About Me</h1>
+    <div class="about-card-header">
+      <h1>About Me</h1>
+      <p>
+        I am an IT student and aspiring web developer currently studying at Pangasinan State University (2022 - Present). I have a strong interest in building modern, responsive, and user-friendly websites while continuously improving my technical skills.
+      </p>
+    </div>
 
-    <p>
-      I am an IT student and aspiring web developer currently studying at Pangasinan State University (2022 - Present). I have a strong interest in building modern, responsive, and user-friendly websites while continuously improving my technical skills. I also have hands-on experience in IT support, including network and printer troubleshooting, file management, and providing technical assistance during my internship in 2024.
+    <div class="about-tags">
+      <span>IT Support</span>
+      <span>Web Development</span>
+      <span>Responsive Design</span>
+      <span>Network Basics</span>
+    </div>
 
-      Alongside my technical abilities, I bring strong soft skills such as communication, teamwork, leadership, and adaptability. I have also completed certifications in AI and the Future of Work, Smart Decisions with Data, Introduction to Cybersecurity, and Computer Hardware Basics.
+    <div class="about-highlights">
+      <div class="highlight-box">
+        <h4>4+ Certifications</h4>
+        <p>AI, Cybersecurity, Hardware, Data</p>
+      </div>
+      <div class="highlight-box">
+        <h4>Internship Experience</h4>
+        <p>Real-world IT support work in 2024</p>
+      </div>
+      <div class="highlight-box">
+        <h4>Creative Problem Solving</h4>
+        <p>Fast issue resolution and communication</p>
+      </div>
+    </div>
 
-      My goal is to gain more real-world experience in web development and IT support while contributing to meaningful and impactful projects.
+    <p class="about-summary">
+      Alongside my technical abilities, I bring strong soft skills such as communication, teamwork, leadership, and adaptability. I am always learning, building new projects, and preparing for a career in the tech industry.
     </p>
 
   </div>
@@ -433,6 +479,9 @@
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
+  </div>
+  <div class="resume-export">
+    <button id="downloadResumeBtn" class="download-btn">Download Resume as PDF</button>
   </div>
 </section>
   </main>
