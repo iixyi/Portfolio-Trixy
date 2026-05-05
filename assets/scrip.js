@@ -90,6 +90,58 @@ galleryToggleBtn?.addEventListener('click', () => {
   galleryToggleBtn.textContent = isCollapsed ? 'Show Less' : 'See More';
 });
 
+// Contact Form Submission
+const contactForm = document.getElementById('contact-form');
+const successDiv = document.querySelector('[data-fs-success]');
+const errorDiv = document.querySelector('[data-fs-error]');
+
+contactForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(contactForm);
+  const submitBtn = contactForm.querySelector('[data-fs-submit-btn]');
+  const originalText = submitBtn.textContent;
+
+  // Hide previous messages
+  if (successDiv) successDiv.style.display = 'none';
+  if (errorDiv) errorDiv.style.display = 'none';
+
+  // Disable button
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  try {
+    const response = await fetch('https://formspree.io/f/xeenglpp', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      // Success
+      if (successDiv) {
+        successDiv.textContent = 'Message sent successfully!';
+        successDiv.style.display = 'block';
+      }
+      contactForm.reset();
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (error) {
+    // Error
+    if (errorDiv) {
+      errorDiv.textContent = 'Failed to send message. Please try again.';
+      errorDiv.style.display = 'block';
+    }
+  } finally {
+    // Re-enable button
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+});
+
 // PDF Export Function
 document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
   if (typeof html2pdf === 'undefined') {
