@@ -110,6 +110,7 @@ function handleFormSubmit(event) {
   const templateParams = {
     from_name: name,
     from_email: email,
+    reply_to: email,
     subject: subject,
     message: message,
     to_email: 'trixycabuang0426@gmail.com'
