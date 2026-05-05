@@ -81,6 +81,15 @@ window.addEventListener('keydown', event => {
   }
 });
 
+const galleryToggleBtn = document.getElementById('galleryToggleBtn');
+const hiddenGalleryItems = document.querySelectorAll('.gallery-item.hidden');
+
+galleryToggleBtn?.addEventListener('click', () => {
+  const isCollapsed = hiddenGalleryItems[0]?.classList.contains('hidden');
+  hiddenGalleryItems.forEach(item => item.classList.toggle('hidden', !isCollapsed));
+  galleryToggleBtn.textContent = isCollapsed ? 'Show Less' : 'See More';
+});
+
 function handleFormSubmit(event) {
   event.preventDefault();
   const form = event.target;
