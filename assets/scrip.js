@@ -112,7 +112,7 @@ function handleFormSubmit(event) {
     from_email: email,
     reply_to: email,
     subject: subject,
-    message: message,
+    message: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
     to_email: 'trixycabuang0426@gmail.com'
   };
 
