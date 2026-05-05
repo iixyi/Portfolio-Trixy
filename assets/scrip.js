@@ -1,5 +1,7 @@
-const links = document.querySelectorAll('.topnav a');
+const links = document.querySelectorAll('#nav-menu a');
 const pages = document.querySelectorAll('.page');
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 const certCards = document.querySelectorAll('.cert-card');
 const modal = document.getElementById('certModal');
 const modalImg = document.getElementById('modalImg');
@@ -25,7 +27,27 @@ links.forEach(link => {
     setActivePage(targetId);
     setActiveLink(link);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Close mobile menu after navigation
+    if (window.innerWidth <= 768) {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
   });
+});
+
+// Hamburger menu toggle
+hamburger?.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+  hamburger.classList.toggle('active');
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (event) => {
+  if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+    navMenu.classList.remove('active');
+    hamburger.classList.remove('active');
+  }
 });
 
 if (links.length > 0) {
@@ -74,7 +96,7 @@ function handleFormSubmit(event) {
   }
 
   // Initialize EmailJS with your public key
-  emailjs.init('YOUR_PUBLIC_KEY_HERE'); // Replace with your actual public key from EmailJS dashboard
+  emailjs.init('OSEJ0GCV12AmuYwFH'); // Your EmailJS public key
 
   const templateParams = {
     from_name: name,
