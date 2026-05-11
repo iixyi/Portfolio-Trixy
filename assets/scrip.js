@@ -81,14 +81,7 @@ window.addEventListener('keydown', event => {
   }
 });
 
-const galleryToggleBtn = document.getElementById('galleryToggleBtn');
-const hiddenGalleryItems = document.querySelectorAll('.gallery-item.hidden');
-
-galleryToggleBtn?.addEventListener('click', () => {
-  const isCollapsed = hiddenGalleryItems[0]?.classList.contains('hidden');
-  hiddenGalleryItems.forEach(item => item.classList.toggle('hidden', !isCollapsed));
-  galleryToggleBtn.textContent = isCollapsed ? 'Show Less' : 'See More';
-});
+// Gallery items now always visible - toggle functionality removed
 
 // Contact Form Submission
 const contactForm = document.getElementById('contact-form');
@@ -162,11 +155,11 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
   pdfResume.style.cssText = `
     background: white !important;
     color: black !important;
-    font-family: 'Times New Roman', serif !important;
-    line-height: 1.4 !important;
+    font-family: Calibri, 'Segoe UI', Arial, sans-serif !important;
+    line-height: 1.3 !important;
     max-width: none !important;
     margin: 0 !important;
-    padding: 20px !important;
+    padding: 10px !important;
     display: block !important;
     width: 100% !important;
     position: relative !important;
@@ -177,16 +170,18 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
   const rightSide = pdfResume.querySelector('.resume-right');
 
   if (leftSide && rightSide) {
-    // Make both sides full width and stack them
+    // Make both sides full width and stack them for 2-page layout
     leftSide.style.cssText = `
       width: 100% !important;
       float: none !important;
       display: block !important;
-      margin-bottom: 20px !important;
-      border-bottom: 2px solid #333 !important;
-      padding-bottom: 20px !important;
+      margin-bottom: 15px !important;
+      padding: 12px !important;
       background: white !important;
       color: black !important;
+      border: none !important;
+      border-bottom: 2px solid #333 !important;
+      page-break-inside: avoid !important;
     `;
 
     rightSide.style.cssText = `
@@ -195,61 +190,74 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
       display: block !important;
       background: white !important;
       color: black !important;
+      padding: 12px !important;
+      border: none !important;
     `;
 
-    // Force all text to black and backgrounds to white - be very aggressive
+    // Force all text to black and backgrounds to white
     const allElements = pdfResume.querySelectorAll('*');
     allElements.forEach(el => {
       el.style.setProperty('color', 'black', 'important');
       el.style.setProperty('background-color', 'white', 'important');
       el.style.setProperty('-webkit-print-color-adjust', 'exact', 'important');
       el.style.setProperty('color-adjust', 'exact', 'important');
+      el.style.setProperty('margin', '0', 'important');
+      el.style.setProperty('padding', '0', 'important');
+      el.style.setProperty('border', 'none', 'important');
 
       if (el.tagName === 'IMG') {
         el.style.setProperty('border', '2px solid #333', 'important');
+        el.style.setProperty('margin', '5px 0', 'important');
       }
     });
 
     // Style specific elements for PDF
-    const headings = pdfResume.querySelectorAll('h1, h2, h3');
+    const headings = pdfResume.querySelectorAll('h1, h2, h3, h4');
     headings.forEach(h => {
       h.style.setProperty('color', 'black', 'important');
       h.style.setProperty('font-weight', 'bold', 'important');
       h.style.setProperty('background-color', 'white', 'important');
+      h.style.setProperty('margin', '8px 0 4px 0', 'important');
+      h.style.setProperty('padding', '0', 'important');
     });
 
     // Style profile section
     const profile = pdfResume.querySelector('.profile');
     if (profile) {
       profile.style.setProperty('text-align', 'center', 'important');
-      profile.style.setProperty('margin-bottom', '20px', 'important');
+      profile.style.setProperty('margin-bottom', '12px', 'important');
       profile.style.setProperty('background-color', 'white', 'important');
+      profile.style.setProperty('page-break-inside', 'avoid', 'important');
     }
 
     const profileImg = pdfResume.querySelector('.profile img');
     if (profileImg) {
-      profileImg.style.setProperty('width', '120px', 'important');
-      profileImg.style.setProperty('height', '120px', 'important');
+      profileImg.style.setProperty('width', '100px', 'important');
+      profileImg.style.setProperty('height', '100px', 'important');
       profileImg.style.setProperty('border-radius', '50%', 'important');
       profileImg.style.setProperty('border', '2px solid #333', 'important');
       profileImg.style.setProperty('background-color', 'white', 'important');
+      profileImg.style.setProperty('margin', '0 auto 8px', 'important');
     }
 
     // Style resume blocks
     const blocks = pdfResume.querySelectorAll('.resume-block, .resume-section');
     blocks.forEach(block => {
-      block.style.setProperty('margin-bottom', '15px', 'important');
+      block.style.setProperty('margin-bottom', '8px', 'important');
       block.style.setProperty('background-color', 'white', 'important');
       block.style.setProperty('color', 'black', 'important');
+      block.style.setProperty('padding-bottom', '8px', 'important');
+      block.style.setProperty('border-bottom', '1px solid #eee', 'important');
+      block.style.setProperty('page-break-inside', 'avoid', 'important');
     });
 
     const blockHeadings = pdfResume.querySelectorAll('.resume-block h3, .resume-section h3');
     blockHeadings.forEach(h => {
-      h.style.setProperty('font-size', '16px', 'important');
+      h.style.setProperty('font-size', '13px', 'important');
       h.style.setProperty('color', 'black', 'important');
-      h.style.setProperty('border-bottom', '1px solid #ccc', 'important');
-      h.style.setProperty('padding-bottom', '5px', 'important');
-      h.style.setProperty('margin-bottom', '8px', 'important');
+      h.style.setProperty('border-bottom', 'none', 'important');
+      h.style.setProperty('padding-bottom', '0', 'important');
+      h.style.setProperty('margin-bottom', '4px', 'important');
       h.style.setProperty('font-weight', 'bold', 'important');
       h.style.setProperty('background-color', 'white', 'important');
     });
@@ -258,17 +266,17 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
     const timelineItems = pdfResume.querySelectorAll('.timeline-item');
     timelineItems.forEach(item => {
       item.style.setProperty('background', 'white', 'important');
-      item.style.setProperty('border', '1px solid #ddd', 'important');
+      item.style.setProperty('border', 'none', 'important');
       item.style.setProperty('border-left', '3px solid #333', 'important');
-      item.style.setProperty('padding', '10px', 'important');
-      item.style.setProperty('margin-bottom', '10px', 'important');
+      item.style.setProperty('padding', '6px 0 6px 10px', 'important');
+      item.style.setProperty('margin-bottom', '6px', 'important');
       item.style.setProperty('color', 'black', 'important');
     });
 
     // Style lists
     const lists = pdfResume.querySelectorAll('ul, ol');
     lists.forEach(list => {
-      list.style.setProperty('margin', '5px 0', 'important');
+      list.style.setProperty('margin', '3px 0', 'important');
       list.style.setProperty('padding-left', '15px', 'important');
       list.style.setProperty('background-color', 'white', 'important');
       list.style.setProperty('color', 'black', 'important');
@@ -276,9 +284,9 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
 
     const listItems = pdfResume.querySelectorAll('li');
     listItems.forEach(li => {
-      li.style.setProperty('font-size', '12px', 'important');
-      li.style.setProperty('line-height', '1.3', 'important');
-      li.style.setProperty('margin-bottom', '2px', 'important');
+      li.style.setProperty('font-size', '11px', 'important');
+      li.style.setProperty('line-height', '1.2', 'important');
+      li.style.setProperty('margin-bottom', '1px', 'important');
       li.style.setProperty('color', 'black', 'important');
       li.style.setProperty('background-color', 'white', 'important');
     });
@@ -286,9 +294,9 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
     // Style paragraphs
     const paragraphs = pdfResume.querySelectorAll('p');
     paragraphs.forEach(p => {
-      p.style.setProperty('font-size', '12px', 'important');
-      p.style.setProperty('line-height', '1.4', 'important');
-      p.style.setProperty('margin', '3px 0', 'important');
+      p.style.setProperty('font-size', '11px', 'important');
+      p.style.setProperty('line-height', '1.3', 'important');
+      p.style.setProperty('margin', '2px 0', 'important');
       p.style.setProperty('color', 'black', 'important');
       p.style.setProperty('background-color', 'white', 'important');
     });
@@ -296,11 +304,9 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
     // Style spans
     const spans = pdfResume.querySelectorAll('span');
     spans.forEach(span => {
-      if (span.textContent.includes('2022') || span.textContent.includes('2016')) {
-        span.style.setProperty('font-size', '11px', 'important');
-        span.style.setProperty('color', '#666', 'important');
-        span.style.setProperty('background-color', 'white', 'important');
-      }
+      span.style.setProperty('font-size', '10px', 'important');
+      span.style.setProperty('color', '#333', 'important');
+      span.style.setProperty('background-color', 'white', 'important');
     });
   }
 
@@ -311,11 +317,11 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
   }
 
   const options = {
-    margin: [0.5, 0.5, 0.5, 0.5],
+    margin: [0.3, 0.3, 0.3, 0.3],
     filename: 'Trixy_Cabuang_Resume.pdf',
     image: {
       type: 'jpeg',
-      quality: 0.95
+      quality: 0.98
     },
     html2canvas: {
       scale: 2,
@@ -332,7 +338,9 @@ document.getElementById('downloadResumeBtn')?.addEventListener('click', () => {
       compress: true
     },
     pagebreak: {
-      mode: ['avoid-all', 'css', 'legacy']
+      mode: 'legacy',
+      before: '.resume-right',
+      after: '.resume-left'
     }
   };
 

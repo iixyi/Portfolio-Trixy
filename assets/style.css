@@ -194,10 +194,10 @@ body {
 }
 
 .home-container p {
-  color: var(--text-secondary);
+  color: var(--text);
   max-width: 720px;
   margin: 18px auto;
-  font-size: 1rem;
+  font-size: 20px;
   line-height: 1.8;
 }
 
@@ -239,7 +239,7 @@ body {
   text-align: left;
   line-height: 1.8;
   font-size: 15px;
-  color: var(--text-secondary);
+  color: #ffffff;
 }
 
 .about-card {
@@ -290,7 +290,7 @@ body {
   background: rgba(56, 189, 248, 0.1);
   color: var(--accent-light);
   border: 1px solid rgba(56, 189, 248, 0.18);
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -346,7 +346,7 @@ body {
   border: 1px solid rgba(96, 165, 250, 0.3);
   border-radius: 10px;
   color: var(--text);
-  font-size: 14px;
+  font-size: 20px;
   transition: all 0.3s ease;
 }
 
@@ -458,11 +458,11 @@ body {
 }
 
 .gallery-item.hidden {
-  display: none;
+  display: block;
 }
 
 .gallery-more-btn {
-  display: block;
+  display: none;
   margin: 24px auto 0;
   padding: 12px 22px;
   border: 1px solid rgba(56, 189, 248, 0.3);
@@ -592,14 +592,14 @@ body {
 }
 
 .profile h2 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
 .profile p {
-  color: var(--accent);
-  font-size: 14px;
+  color: var(--accent-light);
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -610,20 +610,20 @@ body {
 }
 
 .resume-block h3 {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--accent-light);
 }
 
 .resume-block p {
-  font-size: 14px;
-  color: var(--text-secondary);
+  font-size: 16px;
+  color: var(--text);
   line-height: 1.6;
 }
 
 .resume-block span {
-  font-size: 12px;
-  color: var(--muted);
+  font-size: 14px;
+  color: var(--text);
 }
 
 .resume-block ul {
@@ -633,7 +633,7 @@ body {
 
 .resume-block ul li {
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--text);
   padding: 6px 0;
   padding-left: 20px;
   position: relative;
@@ -665,33 +665,33 @@ body {
 }
 
 .resume-header h1 {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
 .resume-header h2 {
   color: var(--accent);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   margin-bottom: 16px;
 }
 
 .resume-header p {
-  color: var(--text-secondary);
-  font-size: 14px;
+  color: var(--text);
+  font-size: 16px;
 }
 
 .resume-section h3 {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   margin-bottom: 16px;
   color: var(--accent-light);
 }
 
 .resume-section p {
-  font-size: 14px;
-  color: var(--text-secondary);
+  font-size: 16px;
+  color: var(--text);
   line-height: 1.8;
   margin-bottom: 12px;
 }
@@ -702,8 +702,8 @@ body {
 }
 
 .resume-section ul li {
-  font-size: 14px;
-  color: var(--text-secondary);
+  font-size: 16px;
+  color: var(--text);
   padding: 8px 0;
   padding-left: 22px;
   position: relative;
@@ -765,7 +765,7 @@ body {
 
 .resume-block ul li {
   padding: 6px 0;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text);
 }
 
@@ -942,55 +942,84 @@ body {
   color: var(--text);
 }
 
-.contact-container {
+/* Contact Dashboard */
+.contact-dashboard {
   display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: 0 auto 50px;
+  justify-content: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
 }
 
-/* CONTACT INFO BOX */
-.contact-info-box {
-  flex: 1;
-  min-width: 280px;
+.dashboard-card {
+  width: 100%;
+  max-width: 1100px;
   background: var(--card);
   border: 1px solid var(--border);
-  padding: 32px;
+  padding: 40px;
   border-radius: 16px;
   transition: all 0.3s ease;
+  box-shadow: 0 12px 40px rgba(96, 165, 250, 0.1);
 }
 
-.contact-info-box:hover {
+.dashboard-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 12px 30px rgba(96, 165, 250, 0.1);
+  box-shadow: 0 16px 50px rgba(96, 165, 250, 0.15);
 }
 
-.contact-info-box h3,
-.contact-form-box h3 {
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* Contact Info Section */
+.contact-info-section h3,
+.contact-form-section h3 {
   color: var(--accent-light);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 24px;
 }
 
 .contact-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
-  margin-bottom: 20px;
-  font-size: 15px;
-  color: var(--text-secondary);
-  line-height: 1.6;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-item:last-of-type {
+  border-bottom: none;
 }
 
 .contact-item ion-icon {
-  font-size: 24px;
+  font-size: 28px;
   color: var(--accent);
   flex-shrink: 0;
+  margin-top: 4px;
 }
 
-/* SOCIAL LINKS */
+.contact-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-item p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-item strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Social Links */
 .social-links {
   margin-top: 32px;
   padding-top: 24px;
@@ -1036,22 +1065,7 @@ body {
   font-size: 20px;
 }
 
-/* CONTACT FORM BOX */
-.contact-form-box {
-  flex: 1;
-  min-width: 280px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 32px;
-  border-radius: 16px;
-  transition: all 0.3s ease;
-}
-
-.contact-form-box:hover {
-  border-color: var(--accent);
-  box-shadow: 0 12px 30px rgba(96, 165, 250, 0.1);
-}
-
+/* Contact Form Section */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1100,7 +1114,7 @@ body {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 140px;
+  min-height: 120px;
 }
 
 .submit-btn {
@@ -1174,7 +1188,30 @@ body {
 }
 
 .map-container iframe {
+  width: 100% !important;
+  height: 450px !important;
+  min-height: 450px !important;
+  border-radius: 16px;
   box-shadow: 0 12px 30px rgba(96, 165, 250, 0.1);
+  display: block !important;
+}
+
+/* =========================================================
+   CREDITS SECTION
+========================================================= */
+.credits-section {
+  text-align: center;
+  margin-top: 60px;
+  padding: 30px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.credits-section p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* =========================================================
@@ -1341,7 +1378,7 @@ body {
 
   .about-wrapper,
   .resume-container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding: 16px;
     gap: 24px;
   }
@@ -1377,6 +1414,45 @@ body {
 
   .project-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  /* Contact Dashboard Responsive */
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .dashboard-card {
+    padding: 24px;
+  }
+
+  #contact {
+    padding: 40px 16px;
+  }
+
+  #contact h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .map-container {
+    padding: 0 16px;
+  }
+
+  .map-container h3 {
+    font-size: 18px;
+  }
+
+  .map-container iframe {
+    height: 350px !important;
+  }
+
+  .credits-section {
+    padding: 20px 16px;
+  }
+
+  .credits-section p {
+    font-size: 12px;
   }
 }
 body::before {
@@ -1550,34 +1626,31 @@ body::before {
     margin-bottom: 32px;
   }
 
-  .contact-container {
-    flex-direction: column;
-    margin-bottom: 30px;
-    gap: 20px;
+  .dashboard-card {
+    padding: 20px;
   }
 
-  .contact-info-box,
-  .contact-form-box {
-    min-width: 100%;
-    padding: 24px;
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
   }
 
   .contact-form {
-    gap: 16px;
+    gap: 14px;
   }
 
   .form-group input,
   .form-group textarea {
-    padding: 12px 14px;
+    padding: 10px 12px;
     font-size: 14px;
   }
 
   .form-group textarea {
-    min-height: 120px;
+    min-height: 100px;
   }
 
   .submit-btn {
-    padding: 14px 24px;
+    padding: 12px 20px;
     font-size: 14px;
   }
 
@@ -1590,20 +1663,29 @@ body::before {
   }
 
   .map-container iframe {
-    height: 280px;
+    height: 280px !important;
   }
 
   .socials {
-    gap: 12px;
+    gap: 10px;
   }
 
   .socials a {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
   }
 
   .socials a ion-icon {
     font-size: 18px;
+  }
+
+  .credits-section {
+    padding: 16px 12px;
+    margin-top: 30px;
+  }
+
+  .credits-section p {
+    font-size: 11px;
   }
 }
 
@@ -1638,15 +1720,24 @@ body::before {
   }
 
   #contact {
-    padding: 32px 12px;
+    padding: 24px 12px;
   }
 
-  .contact-container {
-    padding: 0 12px;
+  .dashboard-card {
+    padding: 16px;
   }
 
   .map-container {
     padding: 0 12px;
+  }
+
+  .credits-section {
+    padding: 12px;
+    margin-top: 20px;
+  }
+
+  .credits-section p {
+    font-size: 10px;
   }
 }
 
