@@ -152,13 +152,13 @@ body {
    PAGE SYSTEM (IMPORTANT FIX)
 ========================================================= */
 .page {
-  display: none;
+  display: none !important;
   width: 100%;
   min-height: 100vh;
   padding-bottom: 40px;
 }
 .page.active {
-  display: block;
+  display: block !important;
 }
 
 /* =========================================================
@@ -554,47 +554,52 @@ body {
 ================================ */
 .resume-container {
   display: flex;
-  gap: 32px;
-  align-items: flex-start;
-  padding: 20px;
-}
+   flex-wrap: wrap;
+   justify-content: space-between;
+   gap: 32px;
+   align-items: flex-start;
+   padding: 20px;
+ }
 
-/* LEFT SIDE */
-.resume-left {
-  width: 30%;
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 32px;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  transition: all 0.3s ease;
-}
+ /* LEFT SIDE */
+ .resume-left {
+   flex: 0 0 320px;
+   max-width: 320px;
+   min-width: 260px;
+   width: 100%;
+   background: var(--card);
+   border: 1px solid var(--border);
+   padding: 32px;
+   border-radius: 16px;
+   display: flex;
+   flex-direction: column;
+   gap: 28px;
+   transition: all 0.3s ease;
+ }
 
-.resume-left:hover {
-  border-color: var(--accent);
-  box-shadow: 0 12px 30px rgba(96, 165, 250, 0.1);
-}
+ .resume-left:hover {
+   border-color: var(--accent);
+   box-shadow: 0 12px 30px rgba(96, 165, 250, 0.1);
+ }
 
-.profile {
-  text-align: center;
-}
+ .profile {
+   text-align: center;
+ }
 
-.profile img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 3px solid var(--accent);
-  object-fit: cover;
-  margin-bottom: 16px;
-  box-shadow: 0 12px 30px rgba(96, 165, 250, 0.15);
-}
+ .profile img {
+   width: 140px;
+   height: 140px;
+   border-radius: 50%;
+   border: 3px solid var(--accent);
+   object-fit: cover;
+   margin-bottom: 16px;
+   box-shadow: 0 12px 30px rgba(96, 165, 250, 0.15);
+ }
 
-.profile h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 8px;
+ .profile h2 {
+   font-size: 24px;
+   font-weight: 700;
+   margin-bottom: 8px;
 }
 
 .profile p {
@@ -635,12 +640,12 @@ body {
   font-size: 14px;
   color: var(--text);
   padding: 6px 0;
-  padding-left: 20px;
+  padding-left: 0;
   position: relative;
 }
 
 .resume-block ul li:before {
-  content: "▸";
+  content: none;
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -648,33 +653,35 @@ body {
 
 /* RIGHT SIDE */
 .resume-right {
-  width: 70%;
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 32px;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  transition: all 0.3s ease;
-}
+   flex: 1 1 1px;
+   min-width: 320px;
+   width: 100%;
+   background: var(--card);
+   border: 1px solid var(--border);
+   padding: 32px;
+   border-radius: 16px;
+   display: flex;
+   flex-direction: column;
+   gap: 28px;
+   transition: all 0.3s ease;
+ }
 
-.resume-right:hover {
-  border-color: var(--accent);
-  box-shadow: 0 12px 30px rgba(96, 165, 250, 0.1);
-}
+ .resume-right:hover {
+   border-color: var(--accent);
+   box-shadow: 0 12px 30px rgba(96, 165, 250, 0.1);
+ }
 
-.resume-header h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
+ .resume-header h1 {
+   font-size: 36px;
+   font-weight: 700;
+   margin-bottom: 8px;
+ }
 
-.resume-header h2 {
-  color: var(--accent);
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 16px;
+ .resume-header h2 {
+   color: var(--accent);
+   font-size: 20px;
+   font-weight: 600;
+   margin-bottom: 16px;
 }
 
 .resume-header p {
@@ -705,13 +712,13 @@ body {
   font-size: 16px;
   color: var(--text);
   padding: 8px 0;
-  padding-left: 22px;
+  padding-left: 0;
   position: relative;
   line-height: 1.6;
 }
 
 .resume-section ul li:before {
-  content: "▸";
+  content: none;
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -1235,12 +1242,14 @@ body {
 .modal-content {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
-  padding: 32px;
+  padding: 40px;
   border-radius: 16px;
-  max-width: 500px;
-  width: 90%;
+  max-width: 900px;
+  width: 95%;
   text-align: center;
   animation: slideUp 0.3s ease;
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 @keyframes slideUp {
@@ -1301,7 +1310,7 @@ body {
 
   #nav-menu {
     position: fixed;
-    top: 100%;
+    top: 56px;
     left: 0;
     right: 0;
     background: rgba(5, 8, 22, 0.98);
@@ -1309,16 +1318,18 @@ body {
     flex-direction: column;
     gap: 0;
     padding: 20px 0;
-    transform: translateY(-100%);
+    transform: scaleY(0);
+    transform-origin: top;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     border-bottom: 1px solid rgba(56, 189, 248, 0.18);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 999;
   }
 
   #nav-menu.active {
-    transform: translateY(0);
+    transform: scaleY(1);
     opacity: 1;
     visibility: visible;
   }
@@ -1809,13 +1820,15 @@ html, body {
     max-width: none;
     margin: 0;
     padding: 0;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
     background: white !important;
     color: black !important;
     font-family: 'Times New Roman', serif;
     line-height: 1.4;
   }
 
-  /* Convert two-column layout to single column for PDF */
   .resume-left,
   .resume-right {
     width: 100% !important;
