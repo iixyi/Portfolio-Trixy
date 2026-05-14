@@ -1836,7 +1836,7 @@ body::before {
     min-height: 44px;
     min-width: 44px;
   }
-}
+
 
 /* Focus states for accessibility */
 #nav-menu a:focus,
